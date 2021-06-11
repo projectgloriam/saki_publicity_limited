@@ -1,0 +1,8 @@
+<% @locations.each do |location| %>
+    <label class="input-control radio block">
+        <input type="radio" name="loc_id" value="<%= location.id %>" onclick="showEventForm()">
+        <span class="check"></span>
+        <span class="caption"><%= location.location_name %></span>
+        <span class="content"><%= location.location_description %></span>
+    </label>
+<% end %>

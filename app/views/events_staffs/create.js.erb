@@ -1,0 +1,10 @@
+var id='<table><thead style="background-color: blue; color: white;"><tr><th colspan="2"><h1>Saki Publicity Limited</h1></th></tr></thead>';
+	id+='<tbody><tr><td><%= @events_staff.staff_qr_code.html_safe %></td>';
+	id+='<td><b><%= @events_staff.staff.staff_first_name %> <%= @events_staff.staff.staff_last_name %></b> <br>';
+	id+='<%= @events_staff.staff.organization.organization_name %><br><%= @events_staff.event.event_name %></td></tr></tbody>';
+	id+='<tfoot style="background-color: blue; color: white;"><tr><td colspan="2">ID No. <%= @events_staff.event.id %><%= @events_staff.staff.id %></td></tr></tfoot></table>';
+
+var win = window.open("result.html", "ID Card", "width=200,height=100");
+$(win).load(function() {
+  $("body").after(id);
+});

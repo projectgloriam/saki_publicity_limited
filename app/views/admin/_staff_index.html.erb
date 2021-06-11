@@ -1,0 +1,9 @@
+<% @staffs.each do |staff| %>
+<div class="org<%= staff.organization_id %>">
+    <label class="switch">
+        <input type="checkbox" name="staff_name" value="<%= staff.id %>" onclick="showLocation()" >
+        <span class="check"></span>
+        <span class="caption"><%= staff.staff_first_name %> <%= staff.staff_last_name %></span>
+    </label>
+</div>
+<% end %>

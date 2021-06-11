@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to "View Attendees", {:controller=>"events_staffs", :action=>"index", :event_id=>@event.id } %>
+
+<p>
+  <strong>Event name:</strong>
+  <%= @event.event_name %>
+</p>
+
+<p>
+  <strong>Event description:</strong>
+  <%= @event.event_description %>
+</p>
+
+<p>
+  <strong>Event date start:</strong>
+  <%= @event.event_date_start %>
+</p>
+
+<p>
+  <strong>Event date end:</strong>
+  <%= @event.event_date_end %>
+</p>
+
+<p>
+  <strong>Event time start:</strong>
+  <%= @event.event_time_start %>
+</p>
+
+<p>
+  <strong>Event time end:</strong>
+  <%= @event.event_time_end %>
+</p>
+
+<p>
+  <strong>Organization:</strong>
+  <%= @event.organization.organization_name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @event.location.location_name %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

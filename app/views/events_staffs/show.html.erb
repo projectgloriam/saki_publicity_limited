@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @events_staff.event.event_name %>
+</p>
+
+<p>
+  <strong>Staff:</strong>
+  <%= @events_staff.staff.staff_first_name %> 
+  <%= @events_staff.staff.staff_last_name %>
+</p>
+
+<p>
+  <strong>Staff qr code:</strong>
+  <%= @events_staff.staff_qr_code.html_safe %>
+</p>
+
+<%= link_to 'Edit', edit_events_staff_path(@events_staff) %> |
+<%= link_to 'Back', events_staffs_path %>

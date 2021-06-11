@@ -1,0 +1,2 @@
+module EventsStaffsHelper
+end

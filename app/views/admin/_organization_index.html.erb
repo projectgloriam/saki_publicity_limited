@@ -1,0 +1,8 @@
+
+<% @organizations.each do |organization| %>
+	    <label class="input-control radio">
+	        <input type="radio" name="org_id" value="<%= organization.id %>" onclick="showStaff()">
+	        <span class="check"></span>
+	        <span class="caption"><%= organization.organization_name %></span>
+	    </label>
+<% end %>

@@ -1,0 +1,59 @@
+<%= form_for(@event, remote: true) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :event_name %><br>
+    <%= f.text_field :event_name %>
+  </div>
+  <div class="field">
+    <%= f.label :event_description %><br>
+    <div class="input-control textarea">
+      <%= f.text_area :event_description %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :event_date_start %><br>
+      <%= f.date_select :event_date_start %>
+  </div>
+  <div class="field">
+    <%= f.label :event_date_end %><br>
+      <%= f.date_select :event_date_end %>
+  </div>
+  <div class="field">
+    <%= f.label :event_time_start %><br>
+    <%= f.time_select :event_time_start %>
+  </div>
+  <div class="field">
+    <%= f.label :event_time_end %><br>
+    <%= f.time_select :event_time_end %>
+  </div>
+  <div class="field">
+    <%= f.label :organization_id %><br>
+    <select name="event[organization_id]" id="event_organization_id" >
+    <% @organizations.each do |org| %>
+      <option value="<%= org.id %>"><%= org.organization_name %></option>
+    <% end %>
+    </select>
+  </div>
+  <div class="field">
+    <%= f.label :location_id %><br>
+    <select name="event[location_id]" id="event_location_id" >
+    <% @locations.each do |loc| %>
+      <option value="<%= loc.id %>"><%= loc.location_name %></option>
+    <% end %>
+    </select>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,56 @@
+<%= form_for(@staff, remote: true) do |f| %>
+  <% if @staff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
+
+      <ul>
+      <% @staff.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="grid">
+    <div class="row cells2">
+      <div class="cell">
+        <div class="field">
+          <%= f.label :staff_first_name %><br>
+          <%= f.text_field :staff_first_name %>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="field">
+          <%= f.label :staff_last_name %><br>
+          <%= f.text_field :staff_last_name %>
+        </div>
+      </div>
+    </div>
+    <div class="row cells2">
+      <div class="cell">
+        <div class="field">
+          <%= f.label :staff_email %><br>
+          <%= f.text_field :staff_email %>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="field">
+          <%= f.label :staff_telephone %><br>
+          <%= f.text_field :staff_telephone %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="field">
+    <%= f.label :organization_id %><br>
+    <select name="staff[organization_id]" id="staff_organization_id" >
+    <% @organizations.each do |org| %>
+      <option value="<%= org.id %>"><%= org.organization_name %></option>
+    <% end %>
+    </select>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

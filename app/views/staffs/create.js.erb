@@ -1,0 +1,5 @@
+hideMetroDialog('#staffdialog');
+$('input:text').val('');
+$("#staff_index").html("<%= j render(partial: 'admin/staff_index') %>");
+$("#staff_index div").not(".org<%= @new_staff.organization_id %>").hide(); //hide all children not relating to the organization by organization_id
+$("#staffnotification").html("New staff created successfully");

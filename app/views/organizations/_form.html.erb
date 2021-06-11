@@ -1,0 +1,56 @@
+<%= form_for(@organization, remote: true) do |f| %>
+  <% if @organization.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@organization.errors.count, "error") %> prohibited this organization from being saved:</h2>
+
+      <ul>
+      <% @organization.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="grid">
+      <div class="row cells2">
+          <div class="cell">
+            <div class="field">
+              <%= f.label :organization_name %><br>
+              <div class="input-control text full-size">
+                  <%= f.text_field :organization_name %>
+              </div>
+            </div>
+          </div>
+          <div class="cell">
+            <div class="field">
+              <%= f.label :organization_address %><br>
+              <div class="input-control text full-size">
+                  <%= f.text_field :organization_address %>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row cells2">
+        <div class="cell">
+          <div class="field">
+            <%= f.label :organization_telephone %><br>
+            <div class="input-control text full-size">
+              <%= f.text_field :organization_telephone %>
+            </div>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="field">
+            <%= f.label :organization_email %><br>
+            <div class="input-control text full-size">
+              <%= f.text_field :organization_email %>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

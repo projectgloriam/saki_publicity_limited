@@ -1,0 +1,4 @@
+$("#staff_index").html("<%= j render(partial: 'staff_index') %>");
+var organization_id = $("input:radio[name ='org_id']:checked").val();
+$('.org'+organization_id).show();
+$("#staff_index").children(":not(.org"+organization_id+")").hide();

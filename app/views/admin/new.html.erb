@@ -1,0 +1,89 @@
+<div class="wizard"
+     data-role="wizard" data-on-finish="finishedEvent();" data-on-cancel="window.location.replace('<%= url_for( :controller=>:admin, :action=>:index ) %>');">
+
+
+    <div class="step">
+        <div class="step-content">
+            <p class="text-small lowercase no-margin">Create an event</p>
+            <h1 class="no-margin-top">Choose Organization or Company</h1>
+
+            <div class="clear-float">
+                <div style="width: 100px; margin-right: 20px" class="place-left">
+                    <img src="/images/people-for-career-growth-1.jpg" data-role="fitImage" data-format='square' data-type='bordered'>
+                </div>
+            </div>
+            <div id="orgnotification" style="color:green;"></div>
+            <div id="organization_index" style="width: 480px; height: 240px; overflow: scroll;">
+                <%= render 'organization_index' %>
+            </div>
+
+            <%= link_to({:action=>"organization_index"}, :remote=>true, :class=>"button cycle-button", :onclick=>'$("#staff_index").children().hide();') do %>
+                <span class="mif-loop2"></span>
+            <% end %>
+
+            </br>
+            <div class="text-small padding20 bg-grayLighter">
+                Select organization and press next.</br>
+                Click new if organization is not among the list. 
+                <button class="button" onclick="$('#orgdialog').data('dialog').toggle()">new</button>
+            </div>
+            <div data-role="dialog,draggable" id="orgdialog" class="dialog padding20 bg-white shadow" data-close-button="true">
+                <h1>New Organization</h1>
+                <%= render 'organizations/form' %>
+            </div>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-content">
+            <p class="text-small lowercase no-margin">Create an event</p>
+            <h1 class="no-margin-top">Choose attendees</h1>
+            <div id="staffnotification" style="color:green;"></div>
+            <div id="staff_index">
+                <%= render 'staff_index' %>
+            </div>
+
+            <%= link_to({:action=>"staff_index"}, :remote=>true, :class=>"button cycle-button") do %>
+                <span class="mif-loop2"></span>
+            <% end %>
+            </br>
+            <div class="text-small padding20 bg-grayLighter">
+                Select those who will attend and press next
+                Click new if staff is not among the list. 
+                <button class="button" id="newstaffbutton" onclick="$('#staffdialog').data('dialog').toggle()">new</button>
+            </div>
+            <div data-role="dialog,draggable" id="staffdialog" class="dialog padding20 bg-white shadow" data-close-button="true">
+                <h1>New Staff</h1>
+                <%= render 'staffs/form' %>
+            </div>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-content">
+            <p class="text-small lowercase no-margin">Create an event</p>
+            <h1 class="no-margin-top">Choose location</h1>
+            <div id="location_index">
+                <%= render 'location_index' %>
+            </div>
+            <div class="text-small padding20 bg-grayLighter">
+                Choose a room or location where the event will be hosted
+            </div>
+
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-content">
+            <p class="text-small lowercase no-margin">Create an event</p>
+            <h1 class="no-margin-top">Finish step</h1>
+            <h2>Event form</h2>
+            <div id="eventnotification" style="color:green;"></div>
+            <div id="eventform">
+            	<%= render 'events/form' %>
+            </div>
+            <div class="text-small padding20 bg-grayLighter">
+                Fill in event details
+            </div>
+
+        </div>
+    </div>
+
+</div>

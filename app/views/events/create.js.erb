@@ -1,0 +1,41 @@
+$('#eventform input:text').val('');
+$("#eventform").children().hide(); //hide event checkbox.
+var staff_count=0;
+var event_id=<%= @new_event.id %>
+var event_staffs=$('input:checkbox:checked[name ="staff_name"]').map(function () {
+  return this.value;
+}).get(); //fetch all checked staff checkbox into an array
+
+//if(event_staffs.length!=0){
+	//var message='Registering users; Please wait patiently. It might take longer';
+	//$("#eventform").after("<p style='color:green;'>"+message+"</p>");
+//}
+
+var message='Registering users; Please wait patiently';
+$("#eventform").after("<p style='color:green;'>"+message+"</p>");
+
+$.each(event_staffs, function(index, value) { //loop through checked staff array
+//send ajax request to a controller for events_staffs.
+	$.ajax({
+	  url: '<%= url_for( :controller=>"events_staffs", :action=>"create" ) %>', 
+	  data: {'events_staff[event_id]' : event_id, 
+	        'events_staff[staff_id]' : value
+	         },
+	  type: 'POST',
+	  //on success, display alert
+      success: function(data){
+        $.Notify({
+          caption: 'Valid',
+          content: data,
+          type: 'success',
+          timeout: 7000
+        });
+
+        $( "#events_staffs" ).load( "<%= url_for :controller=>:events_staffs, :action=>:index %> #events_staffs" );
+
+      }
+	});
+});
+
+$("#eventform").after("<p style='color:green;'> <b>Registration complete</b> </p>");
+setTimeout(function(){ window.location.replace("<%= url_for( :controller=>'admin', :action=>'index' ) %>"); }, 3000);

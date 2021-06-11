@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Saki Publicity Limited</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="container page-content">
+		<div class="presenter" data-role="presenter" data-height="220" data-easing="swing">
+		    <div class="scene">
+				<% @new_events.each_with_index { |event, index|
+
+					case index
+					when 0
+						bg="bg-lightBlue"
+						pos1="10,250"
+						pos2="60,250"
+						pos3="100,250"
+						pos4="160,600"
+					when 1
+						bg="bg-steel"
+						pos1="10,270"
+						pos2="60,250"
+						pos3="100,250"
+						pos4="160,600"
+					else
+						bg="bg-darkCyan"
+						pos1="10,300"
+						pos2="60,250"
+						pos3="100,250"
+						pos4="160,600"
+					end
+					%>
+					<div class="act <%= bg %> fg-white">
+			            <%= image_tag("events/events.jpg", style: 'height: 40%;', class:'actor', 'data-position':'10,10') %>
+			            <h1 class="actor" data-position="<%= pos1 %>"><%= event.event_name %></h1>
+			            <p class="actor" data-position="<%= pos2 %>"><b>Date:</b> <%= event.event_date_start.strftime("%A - %-d %B, %Y") %> to <%= event.event_date_end.strftime("%A - %-d %B, %Y") %></p>
+			            <p class="actor" data-position="<%= pos3 %>"><b>Time:</b> <%= event.event_time_start.strftime("%H:%M") %> to <%= event.event_time_end.strftime("%H:%M") %></p>
+			            <p class="actor" data-position="140,250"><b>Location:</b> <%= event.location.location_name %></p>
+			            <%= link_to({:controller=>'events', :action=>'show', :id=>event.id}, :class=>'actor button success', 'data-position'=>pos4) do %>
+			            	More Info
+			            <% end %>
+					</div>
+				<% } %>
+			</div>
+		</div>
+
+		<%= yield %>
+		
+	</div>
+</body>
+</html>
