@@ -2,11 +2,7 @@
 
 This is a Rails web app for booking rooms or venues for events.
 
-<<<<<<< HEAD
 Things you may need:
-=======
-==== Things you may want to cover:
->>>>>>> 98a647e826ae7375256d7455ce95ec8621af0da9
 
 * Ruby version 2.3.3
 
